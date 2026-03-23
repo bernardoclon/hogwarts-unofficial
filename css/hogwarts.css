@@ -1,0 +1,1466 @@
+@import url(./style.css);
+
+:root {
+    --hogwarts-parchment: #2e2e2e;
+    --hogwarts-ink: #d0d0d0;
+    --house-primary: #444;
+    --house-accent: #782e22;
+    --house-border: #7a7971;
+}
+
+/* Lógica de colores según la casa seleccionada en el formulario */
+form[data-house=""] {
+    --house-primary: #7d7d7d;
+    --house-accent: #888888;
+    --house-border: #ffffff;
+    --house-bg-center: #1a1a1a;
+    --house-bg-end: #000000;
+}
+
+form[data-house="gryffindor"] {
+    --house-primary: #9e1b1b;
+    --house-accent: #ffc107;
+    --house-border: #9e1b1b;
+    --house-bg-center: #220505;
+    --house-bg-end: #050000;
+}
+
+form[data-house="slytherin"] {
+    --house-primary: #2e7d32;
+    --house-accent: #e0e0e0;
+    --house-border: #2e7d32;
+    --house-bg-center: #051a05;
+    --house-bg-end: #000500;
+}
+
+form[data-house="ravenclaw"] {
+    --house-primary: #1a237e;
+    --house-accent: #cd7f32;
+    --house-border: #1a237e;
+    --house-bg-center: #060626;
+    --house-bg-end: #000005;
+}
+
+form[data-house="hufflepuff"] {
+    --house-primary: #f9a825;
+    --house-accent: #fff176;
+    --house-border: #f9a825;
+    --house-bg-center: #281f00;
+    --house-bg-end: #050200;
+}
+/* ---------------------------------------------------- */
+
+.window-app.hogwarts.sheet.actor .window-content{
+    padding: 10px;
+    background: black;
+}
+
+.window-app.hogwarts.sheet.item .window-content{
+    padding: 10px;
+    background: black;
+}
+
+.window-app.hogwarts.sheet.item .section-header{
+    font-size: 24px;
+}
+
+.window-app.hogwarts.dialog .window-content{
+    background-color: black;
+}
+
+.window-app.hogwarts.house-points {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.window-app.hogwarts.house-points .window-content{
+    background: black;
+    border: 2px solid var(--house-border);
+    border-top: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.window-app.hogwarts.sheet.actor {
+    min-width: 800px;
+    min-height: 880px;
+    overflow: hidden;
+    border: 2px solid var(--house-primary);
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+/* Personalización de la barra de título de la ventana (Chrome) */
+.window-app.hogwarts .window-header {
+    background: var(--house-primary);
+    color: #fff;
+    border-bottom: 1px solid var(--house-accent);
+    font-family: "Modesto Condensed", serif;
+    font-size: 18px;
+    padding: 0 10px;
+}
+
+.window-app.hogwarts .window-title {
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.window-app.hogwarts .window-close {
+    color: rgba(255,255,255,0.7);
+    opacity: 0.8;
+}
+
+.window-app.hogwarts .window-close:hover {
+    color: #fff;
+    text-shadow: 0 0 5px var(--house-accent);
+    opacity: 1;
+}
+
+.hogwarts .window-content {
+    background-color: var(--hogwarts-parchment);
+    color: var(--hogwarts-ink);
+    font-family: "Signika", sans-serif;
+}
+
+.hogwarts .window-content form {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-image: radial-gradient(circle at center, var(--house-bg-center, #252525) 0%, var(--house-bg-end, #0a0a0a) 100%);
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.8);
+}
+
+.hogwarts-div{
+    height: 100%;
+    width: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- TIPOGRAFÍA Y CONTROLES MÁGICOS --- */
+
+.hogwarts h1, .hogwarts h2, .hogwarts h3, .hogwarts h4 {
+    font-family: "Modesto Condensed", serif;
+    letter-spacing: 0.5px;
+}
+
+/* Inputs generales con estilo de tinta */
+.hogwarts input[type="text"], 
+.hogwarts input[type="number"],
+.hogwarts select {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-family: "Signika", sans-serif;
+    border: none;
+    border-bottom: 1px solid var(--house-border);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+/*Fondo oscuro para las opciones desplegables */
+.hogwarts select option {
+    background-color: #151515;
+    color: #fff;
+}
+
+.hogwarts input[type="text"]:focus, 
+.hogwarts input[type="number"]:focus,
+.hogwarts select:focus {
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 5px var(--house-accent);
+}
+
+/* --- HEADER --- */
+.hogwarts .sheet-header {
+    flex: 0 0 auto;
+    padding: 10px;
+    gap: 15px;
+    border-bottom: 3px double var(--house-primary);
+    margin-bottom: 10px;
+    align-items: flex-start;
+    position: relative;
+}
+
+.hogwarts .profile-img {
+    flex: 0 0 110px;
+    height: 110px;
+    border: 2px solid var(--house-primary);
+    border-radius: 5px;
+    object-fit: cover;
+    background-color: transparent;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    filter: brightness(0) invert(1);
+}
+
+.hogwarts .header-details {
+    flex: 1;
+    justify-content: space-between;
+    padding-right: 60px;
+}
+
+/* Nombre del personaje */
+.hogwarts .charname input {
+    height: 40px;
+    font-size: 28px;
+    font-family: "Modesto Condensed", serif;
+    border: none;
+    border-bottom: 1px solid var(--house-border);
+    background: transparent;
+    width: 100%;
+    color: var(--house-accent);
+    text-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+/* Botones de Navegación (Main, Spells, Quidditch) */
+.hogwarts .sheet-navigation {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    margin: 0;
+    gap: 5px;
+    flex-direction: column; /* Apila los botones uno encima de otro */
+}
+
+.hogwarts .nav-button {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #555;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: "Modesto Condensed", serif;
+    font-size: 0; /* Elimina el espacio fantasma del texto */
+    line-height: 0;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hogwarts .nav-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    text-shadow: 0 0 2px #fff;
+}
+
+.hogwarts .nav-button.active {
+    background: var(--house-primary);
+    color: #fff;
+    border-color: var(--house-primary);
+    box-shadow: 0 0 5px var(--house-accent);
+}
+
+.hogwarts .nav-button img {
+    border: none;
+    max-width: 30px; /* Limita el tamaño para que no se salga */
+    max-height: 30px;
+    margin: 0; /* Asegura que no haya márgenes heredados */
+    filter: brightness(0) invert(1); /* Convierte el icono a blanco puro */
+}
+
+/* Campos Generales (Casa, Curso...) */
+.hogwarts .header-fields {
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.hogwarts .header-fields .form-group {
+    flex: 1;
+    text-align: center;
+    min-width: 0; /* Crucial: Obliga a que todos los grupos midan lo mismo independientemente del texto */
+}
+
+.hogwarts .header-fields label {
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    color: #888; /* Etiquetas en gris medio */
+    margin-bottom: 2px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.hogwarts .header-fields input,
+.hogwarts .header-fields select {
+    width: 100%;
+    height: 24px;
+    font-size: 13px;
+    background: rgba(0,0,0,0.4); /* Input oscuro */
+    color: #ddd;
+}
+
+/* Secciones del Header (Apariencia, Varita) */
+.hogwarts .header-sections {
+    gap: 10px;
+}
+
+.hogwarts .section-group {
+    flex: 1;
+    border: 1px solid var(--house-border);
+    border-radius: 4px;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.3); /* Fondo oscuro translúcido */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Ajuste para filas divididas dentro de secciones (Appearance/Wand) */
+.hogwarts .section-group .split-row {
+    gap: 5px;
+    margin-bottom: 5px;
+}
+.hogwarts .section-group .split-row:last-child { margin-bottom: 0; }
+
+.hogwarts .section-header {
+    margin: 0 0 5px 0;
+    border-bottom: 1px solid var(--house-border);
+    font-size: 13px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--house-accent);
+    text-transform: uppercase;
+}
+
+.hogwarts .section-group input {
+    text-align: center;
+    background: transparent; /* Inputs dentro de grupos se funden */
+    border: none;
+    border-bottom: 1px solid #444;
+}
+
+/* --- SIDEBAR --- */
+.hogwarts .sidebar {
+    flex: 0 0 220px;
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo más oscuro para sidebar */
+    border-right: 1px solid var(--house-border);
+    padding: 10px;
+    margin-right: 10px;
+    overflow-y: auto;
+}
+
+/* Centrado del logo de la casa */
+.hogwarts .sidebar .house-crest {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.hogwarts .sidebar .house-crest img {
+    border: none;
+    max-width: 160px;
+    height: auto;
+}
+
+.hogwarts .sidebar h3 {
+    border-bottom: 2px solid var(--house-primary);
+    color: var(--house-accent); /* Títulos brillantes */
+    font-family: "Modesto Condensed", serif;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.hogwarts .sidebar .rollable {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.hogwarts .sidebar .rollable:hover {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(120, 46, 34, 0.4);
+}
+
+.hogwarts .sidebar .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.hogwarts .sidebar .form-group label {
+    flex: 1;
+    font-weight: bold;
+}
+
+/* Wrapper para inputs con Badge de bono */
+.hogwarts .sidebar .form-group .input-wrapper {
+    flex: 0 0 50px;
+    position: relative;
+}
+
+/* Aseguramos que el input ocupe el wrapper y sobrescribimos el flex anterior */
+.hogwarts .sidebar .form-group input {
+    flex: unset; 
+    width: 100%;
+    text-align: center;
+}
+
+/* El circulito del bono */
+.hogwarts .trait-bonus {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--house-primary); /* Rojo oscuro temático */
+    color: #fff;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #f1f1e6; /* Borde del color del fondo para separar */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    pointer-events: none; /* Para que no interfiera con clicks cercanos */
+}
+
+/* --- CHECKBOXES ESPECIALES --- */
+.hogwarts .resource-checks {
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+/* Estrellas (Suerte) */
+.hogwarts input.star-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Necesario para que el ::after se posicione respecto a esto */
+    margin: 0 4px;
+    padding: 0;
+    outline: none;
+}
+
+.hogwarts input.star-checkbox::after {
+    content: "";
+    display: block;
+    position: absolute; /* Fuerza a llenar el contenedor padre */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-mask-image: url("../art/estrella.png");
+    mask-image: url("../art/estrella.png");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+/* Animación de parpadeo suave para las estrellas */
+@keyframes star-pulse {
+    0% { filter: drop-shadow(0 0 2px #ffd700); transform: scale(1); }
+    50% { filter: drop-shadow(0 0 10px #ffd700); transform: scale(1.15); }
+    100% { filter: drop-shadow(0 0 2px #ffd700); transform: scale(1); }
+}
+
+.hogwarts input.star-checkbox:checked::after {
+    background-color: #ffd700;
+    animation: star-pulse 2s infinite ease-in-out;
+}
+
+/* Rombos (Experiencia) */
+.hogwarts input.diamond-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(30, 30, 30, 0.6);
+    border: 2px solid #555;
+    border-radius: 2px;
+    transform: rotate(45deg); /* Rotamos un cuadrado para hacer el rombo */
+    margin: 6px; /* Margen ajustado para que quepan los 4 en línea */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.hogwarts input.diamond-checkbox:hover {
+    border-color: #d69dff;
+    box-shadow: 0 0 10px rgba(214, 157, 255, 0.6);
+    transform: rotate(45deg) scale(1.1);
+}
+
+.hogwarts input.diamond-checkbox:checked {
+    background: linear-gradient(135deg, #a855f7 0%, #5b21b6 100%); /* Gradiente mágico */
+    border-color: #fff;
+    box-shadow: 0 0 10px #a855f7;
+    animation: diamond-pulse 2s infinite ease-in-out;
+}
+
+/* --- TABS DE NAVEGACIÓN --- */
+.hogwarts .sheet-tabs {
+    flex: 0 0 30px;
+    border-bottom: 2px solid var(--house-primary);
+    
+}
+
+.hogwarts .sheet-tabs .item {
+    padding: 5px 12px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    margin-top: 8px;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    color: #888;
+    text-decoration: none;
+    font-family: "Modesto Condensed", serif;
+    font-size: 16px;
+    background: rgba(255,255,255,0.05); /* Fondo inactivo sutil */
+    margin-right: 2px;
+}
+
+.hogwarts .sheet-tabs .item:hover {
+    color: #fff;
+    text-shadow: 0 0 2px #fff;
+}
+
+.hogwarts .sheet-tabs .item.active {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: var(--house-primary);
+    color: var(--house-accent);
+    border-bottom: 1px solid transparent;
+    margin-bottom: -1px;
+    background: linear-gradient(to top, var(--hogwarts-parchment) 50%, #2a2a2a 100%);
+    box-shadow: 0 -2px 3px rgba(0,0,0,0.05);
+}
+
+/* Cuerpo de la hoja que ocupa el espacio restante */
+.hogwarts .sheet-body {
+    flex: 1;
+    overflow: hidden;
+    min-height: 0; /* Crucial para que el scroll interno funcione en Flexbox */
+}
+
+/* Ajuste para layouts verticales (como Spells) */
+.hogwarts .sheet-body:not(.flexrow) {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Aseguramos que en el layout principal NO haya wrap (sidebar a la izq, contenido a la der) */
+.hogwarts .sheet-body.flexrow {
+    flex-wrap: nowrap;
+}
+
+.hogwarts .main-content {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Crucial para que el scroll interno funcione en Flexbox */
+}
+
+.hogwarts .content-body {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* --- LISTAS DE ITEMS (Inventario) --- */
+.hogwarts .items-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.hogwarts .items-list-header {
+    margin-bottom: 5px;
+    border-bottom: 2px solid var(--house-primary);
+    align-items: center;
+}
+
+.hogwarts .items-list-header h3 {
+    margin: 0;
+    border: none;
+}
+
+.hogwarts .item {
+    align-items: center;
+    padding: 5px;
+    border: 1px solid var(--house-border);
+    background: rgba(0, 0, 0, 0.3); /* Items oscuros */
+    border-radius: 4px;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.hogwarts .item:hover {
+    background: rgba(255, 255, 255, 0.1); /* Resalte al pasar el mouse */
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* Cantidad del item al lado del nombre */
+.hogwarts .item-quantity {
+    margin-left: 10px;
+    color: #888;
+}
+
+.hogwarts .content-body .item {
+    margin-bottom: 6px;
+}    
+
+/* Interactividad en nombres de items (Expandir descripción) */
+.hogwarts .tab:not(.progreso) .item .item-name {
+    cursor: pointer;
+}
+
+.hogwarts .tab:not(.progreso) .item .item-name:hover {
+    color: var(--house-accent);
+    text-shadow: 0 0 3px var(--house-primary);
+}
+
+/* Contenedor de descripción expandida */
+.hogwarts .item-summary {
+    flex: 1 0 100%; /* Fuerza a ocupar una nueva línea completa */
+    padding: 10px;
+    margin-top: 5px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+    font-size: 13px;
+    color: #ccc;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 4px 4px;
+}
+
+.hogwarts .item-image {
+    flex: 0 0 30px;
+    margin-right: 5px;
+}
+
+.hogwarts .item-image img {
+    border: none;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+}
+
+.hogwarts .item-name {
+    flex: 1;
+    margin: 0;
+    color: var(--hogwarts-ink);
+}
+
+.hogwarts .item-controls {
+    flex: 0 0 60px;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.hogwarts .item-control {
+    color: #888;
+    cursor: pointer;
+}
+
+.hogwarts .item-control:hover {
+    color: #fff;
+    text-shadow: 0 0 2px #fff;
+}
+
+/* --- Pestaña Social --- */
+.hogwarts .social-tab {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 5px;
+}
+
+.hogwarts .social-tab .section-group {
+    padding: 8px;
+}
+
+.hogwarts .social-tab .form-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.hogwarts .social-tab .form-group label {
+    flex: 0 0 60px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.hogwarts .social-tab .spaced-input {
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+/* --- Pestaña Condiciones --- */
+.hogwarts .conditions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 5px;
+}
+
+.hogwarts .condition-item {
+    border: 0.1px solid rgb(82, 82, 82);
+    border-left: 5px solid var(--house-primary);
+    padding: 5px 8px;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    border-radius: 0 4px 4px 0;
+}
+
+.hogwarts .condition-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hogwarts .condition-header label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.hogwarts .condition-header input[type="checkbox"] {
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+.hogwarts .condition-desc {
+    margin: 2px 0 0 24px; /* Alinear con el texto de la label */
+    font-size: 12px;
+    color: #aaa;
+    font-style: italic;
+    line-height: 1.3;
+}
+
+.hogwarts .sequel-input input {
+    width: 100%;
+}
+
+/* --- Pestaña Quidditch --- */
+.hogwarts .quidditch-body {
+    padding: 10px;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.hogwarts .quidditch-top-section {
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: stretch;
+}
+
+.hogwarts .quidditch-side-info {
+    flex: 0 0 250px; /* Ancho fijo para la info lateral */
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.hogwarts .header-block {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--house-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hogwarts .header-block label {
+    display: block;
+    font-size: 11px;
+    color: var(--house-accent);
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.hogwarts .header-block input {
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+}
+
+.hogwarts .quidditch-separator {
+    border: 0;
+    border-top: 1px solid var(--house-border);
+    opacity: 0.5;
+    margin: 15px 0;
+}
+
+/* --- MARCADOR CENTRAL --- */
+.hogwarts .scoreboard-container {
+    background: rgba(0, 0, 0, 0.4);
+    border: 3px double var(--house-primary);
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 0;
+    flex: 1; /* Ocupa el resto del espacio */
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+}
+
+.hogwarts .scoreboard-title {
+    margin: 0 0 5px 0;
+    border: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--house-accent);
+    letter-spacing: 2px;
+}
+
+.hogwarts .scoreboard {
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.hogwarts .team-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hogwarts .team-box.home input.team-name { text-align: right; }
+.hogwarts .team-box.away input.team-name { text-align: left; }
+
+.hogwarts .team-name {
+    font-family: "Modesto Condensed", serif;
+    font-size: 16px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    height: auto;
+}
+
+.hogwarts .team-score {
+    font-family: "Modesto Condensed", serif;
+    font-size: 24px;
+    height: 30px;
+    width: 100%;
+    background: rgba(0,0,0,0.5) !important;
+    border: 1px solid var(--house-border) !important;
+    border-radius: 5px;
+    text-align: center;
+    color: var(--house-accent) !important;
+}
+
+.hogwarts .versus-badge {
+    font-family: "Modesto Condensed", serif;
+    font-size: 14px;
+    color: #888;
+    font-style: italic;
+}
+
+/* --- GRID DE PARTIDOS --- */
+.hogwarts .matches-title {
+    text-align: center;
+    border-bottom: 2px solid var(--house-primary);
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.hogwarts .quidditch-matches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.hogwarts .match-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.hogwarts .match-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.hogwarts .match-label {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+.hogwarts .match-label .vs {
+    color: #777;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.hogwarts .match-card .scores {
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.hogwarts .match-card input {
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* --- TOTALES POR CASA (Leaderboard) --- */
+.hogwarts .totals-section {
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.hogwarts .house-total {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.hogwarts .house-total input {
+    font-family: "Modesto Condensed", serif;
+    font-size: 28px;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+/* Colores fijos para el leaderboard */
+.hogwarts .house-total.gryffindor { border-color: #7f0909; box-shadow: 0 0 10px rgba(127, 9, 9, 0.2); }
+.hogwarts .house-total.gryffindor input { color: #ffc107; }
+
+.hogwarts .house-total.hufflepuff { border-color: #eec500; box-shadow: 0 0 10px rgba(238, 197, 0, 0.2); }
+.hogwarts .house-total.hufflepuff input { color: #fff176; }
+
+.hogwarts .house-total.ravenclaw { border-color: #2735d3; box-shadow: 0 0 10px rgba(14, 26, 64, 0.4); }
+.hogwarts .house-total.ravenclaw input { color: #94bce4; }
+
+.hogwarts .house-total.slytherin { border-color: #1a472a; box-shadow: 0 0 10px rgba(26, 71, 42, 0.3); }
+.hogwarts .house-total.slytherin input { color: #aaaaaa; }
+
+/* --- Hoja de Item --- */
+.window-app.hogwarts.sheet.item {
+    min-width: 520px;
+    min-height: 480px;
+    /* Asegura que el borde temático se aplique también a los items */
+    border-color: var(--house-primary);
+}
+
+/* Cabecera de ventana de Item hereda los colores */
+.window-app.hogwarts.sheet.item .window-header {
+    background: var(--house-primary);
+    border-bottom: 1px solid var(--house-accent);
+}
+
+/* Estructura Flex para que el editor ocupe el espacio vertical */
+.window-app.hogwarts.sheet.item form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.window-app.hogwarts.sheet.item .sheet-body {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Asegura que el editor ocupe todo el alto si no hay tabs */
+.window-app.hogwarts.sheet.item .sheet-body .editor {
+    flex: 1;
+}
+
+.window-app.hogwarts.sheet.item .sheet-body .tab {
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* Asegura que el input de nombre en items tenga el tamaño correcto y coincida con el de progreso */
+.window-app.hogwarts.sheet.item .header-fields .charname input {
+    font-family: "Modesto Condensed", serif;
+    font-size: 30px;
+    height: 40px;
+}
+
+/* Override específico para items de tipo 'progreso' */
+.window-app.hogwarts.sheet.item.progreso {
+    min-width: 475px;
+    min-height: 210px;
+}
+
+/* Ajuste para el nombre en items de progreso para evitar saltos de línea */
+.window-app.hogwarts.sheet.item.progreso .charname {
+    font-family: "Modesto Condensed", serif;
+    font-size: 30px;
+    margin: 0 0 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--house-accent); /* Mantenemos un color genérico bonito para ítems sueltos */
+}
+
+.hogwarts.sheet.item .sheet-header {
+    align-items: center;
+    display: flex; /* Asegura layout flexible (Imagen izq | Contenido der) */
+}
+
+/* Aseguramos que los campos de cabecera ocupen todo el ancho disponible */
+.window-app.hogwarts.sheet.item .header-fields {
+    flex: 1;
+}
+
+/* Estilo específico para el grupo de Cantidad en objetos mágicos */
+.window-app.hogwarts.sheet.item .header-fields .quantity-group {
+    display: flex;
+    justify-content: flex-end; /* Alineado a la derecha */
+    align-items: center;
+    margin-top: 5px;
+}
+
+.window-app.hogwarts.sheet.item .header-fields .quantity-group label {
+    flex: 0 0 auto;
+    margin: 0 8px 0 0; /* Espacio entre label e input */
+    text-align: right;
+}
+
+.window-app.hogwarts.sheet.item .header-fields .quantity-group input {
+    flex: 0 0 60px; /* Input estrecho */
+    width: 60px;
+    text-align: center;
+}
+
+.window-app.hogwarts.sheet.item.hechizo .header-fields .spell-level-group {
+    display: flex;
+    justify-content: flex-end; /* Alineado a la derecha */
+    align-items: center;
+    margin-top: 5px;
+}
+
+.window-app.hogwarts.sheet.item.hechizo .header-fields .spell-level-group label {
+    flex: 0 0 auto;
+    margin-right: 8px;
+}
+
+.window-app.hogwarts.sheet.item.hechizo .header-fields .spell-level-group select {
+    flex: 0 1 auto; /* No crece, se encoge si es necesario, se basa en el contenido */
+    width: auto; /* El ancho se ajusta al contenido */
+}
+
+.hogwarts.sheet.item .profile-img {
+    flex: 0 0 64px;
+    height: 64px;
+}
+
+.hogwarts.sheet.item .resource-label {
+    font-weight: bold;
+}
+
+/* --- Chat Card --- */
+
+/* Variables de color para las cartas de chat (igual que el formulario) */
+.hogwarts-chat-card[data-house="gryffindor"] { --house-primary: #9e1b1b; --house-accent: #ffc107; }
+.hogwarts-chat-card[data-house="slytherin"]  { --house-primary: #2e7d32; --house-accent: #e0e0e0; }
+.hogwarts-chat-card[data-house="ravenclaw"]  { --house-primary: #1a237e; --house-accent: #cd7f32; }
+.hogwarts-chat-card[data-house="hufflepuff"] { --house-primary: #f9a825; --house-accent: #fff176; }
+
+.hogwarts-chat-card {
+    position: relative;
+    padding: 10px;
+    background: #151515;
+    color: #d0d0d0;
+    border: 1px solid #444;
+    border-radius: 5px;
+    font-family: "Signika", sans-serif;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* Bordes laterales estilo Nahual según el resultado */
+.hogwarts-chat-card.result-success { border-left: 5px solid #ffc107; }
+.hogwarts-chat-card.result-partial { border-left: 5px solid #e0e0e0; }
+.hogwarts-chat-card.result-failure { border-left: 5px solid #b71c1c; }
+
+/* Cabecera estilo Nahual */
+.hogwarts-chat-card .result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--house-primary);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.hogwarts-chat-card .move-title {
+    margin: 0;
+    border: none;
+    font-family: "Modesto Condensed", serif;
+    font-size: 20px;
+    color: var(--house-accent);
+}
+
+.hogwarts-chat-card .roll-total {
+    font-family: "Modesto Condensed", serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1;
+    text-shadow: 0 0 10px var(--house-primary);
+}
+
+.hogwarts-chat-card .dice-display {
+    text-align: center; 
+    margin-bottom: 5px; 
+    color: #d0d0d0;
+    font-size: 2.5em;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.hogwarts-chat-card .dice-display i {
+    margin: 0 5px;
+}
+
+/* Estilos de Resultado Narrativo */
+.hogwarts-chat-card .roll-outcome {
+    text-align: center;
+    font-style: italic;
+    font-family: "Modesto Condensed", serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid #333;
+    line-height: 1.2;
+    border-radius: 3px;
+}
+
+.hogwarts-chat-card .result-success {
+    color: #ffc107; /* Dorado */
+    text-shadow: 0 0 5px rgba(255, 193, 7, 0.3);
+}
+
+.hogwarts-chat-card .result-partial {
+    color: #e0e0e0; /* Plata */
+}
+
+.hogwarts-chat-card .result-failure {
+    color: #b71c1c; /* Rojo Sangre Oscuro */
+}
+
+.hogwarts-chat-card .roll-details {
+    font-size: 12px;
+    color: var(--house-accent);
+    padding-top: 5px;
+}
+
+/* --- Hoja de Item Progreso --- */
+.hogwarts.sheet.item .progres-info {
+    padding: 10px;
+    text-align: center;
+    font-style: italic;
+    color: #aaa;
+    background: rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
+
+/* --- DIÁLOGO DE TIRADAS --- */
+
+/* Variables de color para el diálogo según la clase de la casa */
+.hogwarts.dialog.gryffindor { --house-primary: #9e1b1b; --house-accent: #ffc107; }
+.hogwarts.dialog.slytherin  { --house-primary: #2e7d32; --house-accent: #e0e0e0; }
+.hogwarts.dialog.ravenclaw  { --house-primary: #1a237e; --house-accent: #cd7f32; }
+.hogwarts.dialog.hufflepuff { --house-primary: #f9a825; --house-accent: #fff176; }
+
+/* Estilo del Marco de la Ventana de Diálogo */
+.window-app.hogwarts.dialog {
+    border: 2px solid var(--house-primary);
+    border-radius: 5px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+    background: #121212;
+    min-width: 400px;
+    max-width: 600px;
+    height: auto !important;
+}
+
+.hogwarts.dialog .window-content {
+    background: transparent;
+    color: #e0e0e0;
+    font-family: "Signika", sans-serif;
+    padding: 15px;
+    border: none;
+    overflow: visible; /* Permite ver sombras/bordes correctamente */
+}
+
+.hogwarts.dialog .form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px; /* Espaciado consistente entre label e input */
+}
+
+.hogwarts.dialog label {
+    flex: 0 0 35%; /* Ancho fijo generoso para etiquetas */
+    font-weight: bold;
+    color: var(--house-accent);
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 24px;
+}
+
+.hogwarts.dialog input[type="text"], 
+.hogwarts.dialog input[type="number"], 
+.hogwarts.dialog select {
+    flex: 1; /* Ocupa todo el espacio restante */
+    width: 100%; 
+    min-width: 0; /* CRUCIAL: Evita que el input crezca más allá del contenedor */
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid #444;
+    height: 30px; /* Altura más cómoda */
+    border-radius: 3px;
+    padding: 0 8px;
+    box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.hogwarts.dialog input:focus, 
+.hogwarts.dialog select:focus {
+    outline: none;
+    border-color: var(--house-accent);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 8px var(--house-primary);
+}
+
+/* Checkboxes alineados a la derecha y sin estilos de input de texto */
+.hogwarts.dialog input[type="checkbox"] {
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    margin-left: auto; /* Empuja el checkbox al extremo derecho */
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.hogwarts.dialog hr {
+    border: 0;
+    border-top: 1px solid #444;
+    margin: 15px 0;
+}
+
+.hogwarts.dialog .dialog-buttons .dialog-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #555;
+    border-radius: 3px;
+    color: #ddd;
+    font-family: "Modesto Condensed", serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    line-height: 28px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.hogwarts.dialog .dialog-buttons .dialog-button.default {
+    border-color: var(--house-accent);
+    color: var(--house-accent);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.hogwarts.dialog .dialog-buttons .dialog-button:hover {
+    background: var(--house-primary);
+    color: #fff;
+    border-color: var(--house-accent);
+    box-shadow: 0 0 10px var(--house-accent);
+}
+
+/* --- GM PANEL: PUNTOS DE CASAS --- */
+.hogwarts.house-points {
+    min-width: 400px;
+}
+
+/* Hacemos que el contenedor de botones de la sidebar pueda tener varias filas */
+.sidebar-tab .header-actions {
+    flex-wrap: wrap;
+}
+
+.house-points-btn{
+    flex-basis: 100%;
+    margin-top: 6px;
+    padding: 2px 0;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--house-border);
+    color: #ddd;
+    font-family: "Modesto Condensed", serif;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.house-points-btn:hover {
+    background: var(--house-primary);
+    color: #fff;
+    border-color: var(--house-accent);
+    box-shadow: 0 0 8px var(--house-accent);
+    text-shadow: 0 0 3px #000;
+}
+
+.hogwarts .house-cup-container {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--house-border);
+}
+
+.hogwarts .house-cup {
+    width: 120px;
+    height: 120px;
+    display: inline-block;
+    -webkit-mask-image: url("../art/cup.png");
+    mask-image: url("../art/cup.png");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    background-color: #555; /* Color por defecto (Gris) */
+    transition: background-color 0.5s ease;
+    position: relative; /* Para el efecto de brillo */
+    overflow: hidden;   /* Para contener el brillo */
+    cursor: pointer;
+}
+
+/* Aumento de tamaño para la copa en la hoja de personaje */
+.hogwarts.sheet.actor .house-cup {
+    width: 320px;
+    height: 320px;
+}
+
+/* Colores de la Copa según la casa ganadora */
+.hogwarts .house-cup.gryffindor { background-color: #9e1b1b; filter: drop-shadow(0 0 12px #ffc107); }
+.hogwarts .house-cup.slytherin { background-color: #2e7d32; filter: drop-shadow(0 0 12px #e0e0e0); }
+.hogwarts .house-cup.ravenclaw { background-color: #1a237e; filter: drop-shadow(0 0 12px #cd7f32); }
+.hogwarts .house-cup.hufflepuff { background-color: #f9a825; filter: drop-shadow(0 0 12px #fff176); }
+
+/* Efecto de destello en la copa */
+.hogwarts .house-cup::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    transform: translateX(-250%) skewX(-30deg);
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0; /* Invisible por defecto */
+}
+
+@keyframes cup-shine {
+    0% { transform: translateX(-250%) skewX(-30deg); }
+    100% { transform: translateX(350%) skewX(-30deg); }
+}
+
+.hogwarts .house-cup.shining::after {
+    animation: cup-shine 1.5s infinite ease-in-out;
+    opacity: 1;
+}
+
+.hogwarts .points-control {
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.hogwarts .points-control input {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    height: 35px;
+}
+
+.hogwarts .points-control select {
+    height: 35px;
+    font-size: 16px;
+}
+
+.hogwarts .btn-puntuar {
+    background: var(--house-primary);
+    color: #fff;
+    border: 1px solid var(--house-accent);
+    font-family: "Modesto Condensed", serif;
+    font-size: 22px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.hogwarts .btn-puntuar:hover {
+    box-shadow: 0 0 10px var(--house-accent);
+}
+
+/* --- ESTILOS DE PESTAÑA MALDICIONES --- */
+.hogwarts .sheet-tabs .item.maldiciones {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.hogwarts .sheet-tabs .item.maldiciones img {
+    border: none;
+    margin-right: 5px;
+}
+
+.chat-message {
+    background: black;
+    border: 1px solid #333;
+}
+
+.chat-message .message-timestamp {
+    color: white;
+}
+
+.chat-message .message-sender {
+    color: white;
+}
+
+.chat-message .message-delete {
+    color: white;
+}

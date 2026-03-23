@@ -1,0 +1,88 @@
+<header class="sheet-header flexrow">
+    <!-- Retrato del Personaje -->
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+
+    <div class="header-details flexcol">
+        <!-- Nombre del Personaje -->
+        <h1 class="charname">
+            <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'HOGWARTS.NamePlaceholder'}}"/>
+        </h1>
+
+        <!-- Botones de Navegación entre Hojas (Modos) -->
+        <!-- La lógica para cambiar de hoja se debe manejar en el JS del ActorSheet -->
+        <div class="sheet-navigation flexcol">
+            <button type="button" class="nav-button {{#if (eq sheetMode 'main')}}active{{/if}}" data-sheet-mode="main" title="{{localize 'HOGWARTS.Main'}}">
+                <img src="systems/hogwarts/art/lentes.png" height="24" width="24"/>
+            </button>
+            <button type="button" class="nav-button {{#if (eq sheetMode 'spells')}}active{{/if}}" data-sheet-mode="spells" title="{{localize 'HOGWARTS.Spells'}}">
+                <img src="systems/hogwarts/art/sombrero.png" height="24" width="24"/>
+            </button>
+            <button type="button" class="nav-button {{#if (eq sheetMode 'quidditch')}}active{{/if}}" data-sheet-mode="quidditch" title="{{localize 'HOGWARTS.Quidditch'}}">
+                <img src="systems/hogwarts/art/escoba.png" height="24" width="24"/>
+            </button>
+            <button type="button" class="nav-button {{#if (eq sheetMode 'cup')}}active{{/if}}" data-sheet-mode="cup" title="Copa de las Casas">
+                <img src="systems/hogwarts/art/cup.png" height="24" width="24"/>
+            </button>
+        </div>
+
+        <!-- Fila 1: Datos Principales (Casa y Curso) -->
+        <div class="header-fields flexrow">
+            <div class="form-group">
+                <label>{{localize "HOGWARTS.House"}}</label>
+                <select name="system.details.house">
+                    <option value="" {{#if (eq system.details.house "")}}selected{{/if}}>{{localize "HOGWARTS.HouseNone"}}</option>
+                    <option value="gryffindor" {{#if (eq system.details.house "gryffindor")}}selected{{/if}}>{{localize "HOGWARTS.HouseGryffindor"}}</option>
+                    <option value="hufflepuff" {{#if (eq system.details.house "hufflepuff")}}selected{{/if}}>{{localize "HOGWARTS.HouseHufflepuff"}}</option>
+                    <option value="ravenclaw" {{#if (eq system.details.house "ravenclaw")}}selected{{/if}}>{{localize "HOGWARTS.HouseRavenclaw"}}</option>
+                    <option value="slytherin" {{#if (eq system.details.house "slytherin")}}selected{{/if}}>{{localize "HOGWARTS.HouseSlytherin"}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>{{localize "HOGWARTS.Year"}}</label>
+                <input type="text" name="system.details.year" value="{{system.details.year}}"/>
+            </div>
+        </div>
+
+        <!-- Fila 2: Detalles del Mago (Ascendencia, Ambición, Patronus) -->
+        <div class="header-fields flexrow">
+            <div class="form-group">
+                <label>{{localize "HOGWARTS.Heritage"}}</label>
+                <input type="text" name="system.details.heritage" value="{{system.details.heritage}}"/>
+            </div>
+            <div class="form-group">
+                <label>{{localize "HOGWARTS.Ambition"}}</label>
+                <input type="text" name="system.details.ambition" value="{{system.details.ambition}}"/>
+            </div>
+            <div class="form-group">
+                <label>{{localize "HOGWARTS.Patronus"}}</label>
+                <input type="text" name="system.details.patronus" value="{{system.details.patronus}}"/>
+            </div>
+        </div>
+
+        <!-- Secciones de Apariencia y Varita -->
+        <div class="header-sections flexrow">
+            <!-- Apariencia -->
+            <div class="section-group flexcol">
+                <h4 class="section-header">{{localize "HOGWARTS.Appearance"}}</h4>
+                <div class="flexrow split-row">
+                    <input type="text" name="system.appearance.skin" value="{{system.appearance.skin}}" placeholder="{{localize 'HOGWARTS.Skin'}}"/>
+                </div>
+                <div class="flexrow split-row">
+                    <input type="text" name="system.appearance.hair" value="{{system.appearance.hair}}" placeholder="{{localize 'HOGWARTS.Hair'}}"/>
+                    <input type="text" name="system.appearance.build" value="{{system.appearance.build}}" placeholder="{{localize 'HOGWARTS.Build'}}"/>
+                </div>
+            </div>
+            <!-- Varita -->
+            <div class="section-group flexcol">
+                <h4 class="section-header">{{localize "HOGWARTS.Wand"}}</h4>
+                <div class="flexrow split-row">
+                    <input type="text" name="system.wand.wood" value="{{system.wand.wood}}" placeholder="{{localize 'HOGWARTS.Wood'}}"/>
+                    <input type="text" name="system.wand.core" value="{{system.wand.core}}" placeholder="{{localize 'HOGWARTS.Core'}}"/>
+                </div>
+                <div class="flexrow split-row">
+                    <input type="text" name="system.wand.appearance" value="{{system.wand.appearance}}" placeholder="{{localize 'HOGWARTS.WandAppearance'}}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

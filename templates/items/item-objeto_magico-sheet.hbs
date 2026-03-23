@@ -1,0 +1,18 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'HOGWARTS.Name'}}"/></h1>
+            
+            <div class="form-group quantity-group">
+                <label>{{localize "HOGWARTS.Quantity"}}</label>
+                <input type="number" name="system.quantity" value="{{system.quantity}}" data-dtype="Number"/>
+            </div>
+        </div>
+    </header>
+
+    <section class="sheet-body">
+        <h3 class="section-header">{{localize "HOGWARTS.Description"}}</h3>
+        {{editor enrichedDescription target="system.description" button=true owner=owner editable=editable}}
+    </section>
+</form>

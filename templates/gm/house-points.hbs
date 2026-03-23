@@ -1,0 +1,42 @@
+<form autocomplete="off">
+    <!-- Copa Grande Cambiante -->
+    <div class="house-cup-container">
+        <div class="house-cup {{winner}}"></div>
+    </div>
+
+    <!-- Controles de Puntuación -->
+    <div class="points-control flexrow">
+        <input type="number" name="pointsInput" placeholder="0" autofocus/>
+        <select name="houseSelect">
+            {{#each houses as |label key|}}
+            <option value="{{key}}">{{localize label}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <button id="btn-puntuar" class="btn-puntuar">
+        <i class="fas fa-magic"></i> Puntuar
+    </button>
+
+    <hr>
+
+    <!-- Totales (Estilo Mago-Quidditch) -->
+    <div class="totals-section flexrow">
+        <div class="house-total gryffindor">
+            <img src="systems/hogwarts/art/casas/gryffindor.png" width="40" height="40" title="Gryffindor"/>
+            <input type="number" value="{{points.gryffindor}}" data-house="gryffindor"/>
+        </div>
+        <div class="house-total hufflepuff">
+            <img src="systems/hogwarts/art/casas/hufflepuff.png" width="40" height="40" title="Hufflepuff"/>
+            <input type="number" value="{{points.hufflepuff}}" data-house="hufflepuff"/>
+        </div>
+        <div class="house-total ravenclaw">
+            <img src="systems/hogwarts/art/casas/ravenclaw.png" width="40" height="40" title="Ravenclaw"/>
+            <input type="number" value="{{points.ravenclaw}}" data-house="ravenclaw"/>
+        </div>
+        <div class="house-total slytherin">
+            <img src="systems/hogwarts/art/casas/slytherin.png" width="40" height="40" title="Slytherin"/>
+            <input type="number" value="{{points.slytherin}}" data-house="slytherin"/>
+        </div>
+    </div>
+</form>

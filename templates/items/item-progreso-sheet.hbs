@@ -1,0 +1,34 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname">{{item.name}}</h1>
+
+            <div class="flexrow" style="gap: 5px;">
+                <div class="form-group">
+                    <label>{{localize "HOGWARTS.Type"}}</label>
+                    <select name="system.progressType">
+                        {{#each progressTypes as |type key|}}
+                        <option value="{{key}}" {{#if (eq ../system.progressType key)}}selected{{/if}}>{{localize type.label}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                {{#if hasTraitSelection}}
+                <div class="form-group">
+                    <label>{{localize "HOGWARTS.Traits"}}</label>
+                    <select name="system.selectedTrait">
+                        {{selectOptions traits selected=system.selectedTrait localize=true}}
+                    </select>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </header>
+
+    <section class="sheet-body">
+        <div class="progres-info">
+            <p>Este objeto representa un hito de progreso. Al ser añadido al personaje.</p>
+        </div>
+    </section>
+</form>

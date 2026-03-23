@@ -1,0 +1,50 @@
+<form class="{{cssClass}}" autocomplete="off" data-house="{{system.details.house}}">
+
+    <!-- 1. Header Común -->
+    {{> "systems/hogwarts/templates/actor/parts/header.hbs"}}
+
+    <!-- Cuerpo de la hoja de Hechizos -->
+    <section class="sheet-body">
+
+        <!-- Barra de Navegación de Tabs (Cursos 1-7 y Maldiciones) -->
+        <nav class="sheet-tabs tabs" data-group="spells">
+            <a class="item" data-tab="curso1">{{localize "HOGWARTS.Course"}} 1</a>
+            <a class="item" data-tab="curso2">{{localize "HOGWARTS.Course"}} 2</a>
+            <a class="item" data-tab="curso3">{{localize "HOGWARTS.Course"}} 3</a>
+            <a class="item" data-tab="curso4">{{localize "HOGWARTS.Course"}} 4</a>
+            <a class="item" data-tab="curso5">{{localize "HOGWARTS.Course"}} 5</a>
+            <a class="item" data-tab="curso6">{{localize "HOGWARTS.Course"}} 6</a>
+            <a class="item" data-tab="curso7">{{localize "HOGWARTS.Course"}} 7</a>
+            <a class="item maldiciones" data-tab="maldiciones"><img src="systems/hogwarts/art/skull.png" height="16" width="16"/> {{localize "HOGWARTS.Curses"}}</a>
+        </nav>
+
+        <!-- Cuerpo de los Tabs de Hechizos -->
+        <section class="content-body">
+            <div class="tab" data-group="spells" data-tab="curso1">
+                {{> "systems/hogwarts/templates/actor/parts/spells/curso1/curso1.hbs"}}
+            </div>
+            <div class="tab" data-group="spells" data-tab="curso2">
+                {{> "systems/hogwarts/templates/actor/parts/spells/curso2/curso2.hbs"}}
+            </div>
+            <div class="tab" data-group="spells" data-tab="curso3">
+                {{> "systems/hogwarts/templates/actor/parts/spells/curso3/curso3.hbs"}}
+            </div>
+            <div class="tab" data-group="spells" data-tab="curso4">
+                {{> "systems/hogwarts/templates/actor/parts/spells/curso4/curso4.hbs"}}
+            </div>
+            <div class="tab" data-group="spells" data-tab="curso5">
+                {{> "systems/hogwarts/templates/actor/parts/spells/curso5/curso5.hbs"}}
+            </div>
+            <div class="tab" data-group="spells" data-tab="curso6">
+                {{> "systems/hogwarts/templates/actor/parts/spells/curso6/curso6.hbs"}}
+            </div>
+            <div class="tab" data-group="spells" data-tab="curso7">
+                {{> "systems/hogwarts/templates/actor/parts/spells/curso7/curso7.hbs"}}
+            </div>
+            <div class="tab" data-group="spells" data-tab="maldiciones">
+                {{> "systems/hogwarts/templates/actor/parts/spells/maldiciones/maldiciones.hbs"}}
+            </div>
+        </section>
+
+    </section>
+</form>

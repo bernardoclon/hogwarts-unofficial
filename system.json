@@ -1,0 +1,61 @@
+ {
+  "id": "hogwarts",
+  "title": "Hogwarts Unnoficial",
+  "description": "Sistema no Oficial de Hogwarts para Foundry VTT",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "13",
+    "maximum": "13"
+  },
+  "authors": [
+    {
+      "name": "Don Goblin"
+    }
+  ],
+  "scripts": [],
+  "esmodules": [
+    "scripts/main.mjs"
+  ],
+  "styles": [
+    "css/hogwarts.css"
+  ],
+  "packs": [
+    {
+      "name": "hechizos",
+      "label": "Hechizos de Hogwarts",
+      "path": "packs/hechizos",
+      "type": "Item",
+      "system": "hogwarts",
+      "folder": "Hogwarts"
+    },
+    {
+      "name": "objetos",
+      "label": "Objetos Magicos",
+      "path": "packs/hechizos",
+      "type": "Item",
+      "system": "hogwarts",
+      "folder": "Hogwarts"
+    },
+    {
+      "name": "actores",
+      "label": "Personajes de Hogwarts",
+      "path": "packs/actores",
+      "type": "Actor",
+      "system": "hogwarts",
+      "folder": "Hogwarts"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json",
+      "flags": {}
+    }
+  ],
+  "url": "https://github.com/bernardoclon/hogwarts-unofficial",
+  "manifest": "https://github.com/bernardoclon/hogwarts-unofficial/releases/latest/download/system.json",
+  "download": "https://github.com/bernardoclon/hogwarts-unofficial/releases/latest/download/nahual.zip",
+  "background": "systems/hogwarts/art/banner.png"
+  }

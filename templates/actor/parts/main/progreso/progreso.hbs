@@ -1,0 +1,25 @@
+<div class="tab-content">
+    <!-- Encabezado de la Lista -->
+    <div class="items-list-header flexrow">
+        <h3 class="item-name">{{localize "HOGWARTS.ProgressTitle"}}</h3>
+        <div class="item-controls">
+            <a class="item-control item-create" title="{{localize 'HOGWARTS.CreateProgress'}}" data-type="progreso">
+                <i class="fas fa-plus"></i> {{localize "HOGWARTS.Add"}}
+            </a>
+        </div>
+    </div>
+
+    <!-- Lista de Progreso -->
+    <ol class="items-list">
+        {{#each progress as |item id|}}
+        <li class="item flexrow" data-item-id="{{item._id}}">
+            <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+            <h4 class="item-name">{{item.name}}</h4>
+            <div class="item-controls">
+                <a class="item-control item-edit" title="{{localize 'HOGWARTS.Edit'}}"><i class="fas fa-edit"></i></a>
+                <a class="item-control item-delete" title="{{localize 'HOGWARTS.Delete'}}"><i class="fas fa-trash"></i></a>
+            </div>
+        </li>
+        {{/each}}
+    </ol>
+</div>

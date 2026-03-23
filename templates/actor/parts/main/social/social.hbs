@@ -1,0 +1,36 @@
+<div class="tab-content social-tab">
+    <!-- Mascota -->
+    <div class="section-group">
+        <h4 class="section-header">{{localize "HOGWARTS.Pet"}}</h4>
+        <div class="form-group">
+            <label>{{localize "HOGWARTS.Name"}}</label>
+            <input type="text" name="system.social.pet.name" value="{{system.social.pet.name}}"/>
+        </div>
+        <div class="form-group">
+            <label>{{localize "HOGWARTS.Species"}}</label>
+            <input type="text" name="system.social.pet.species" value="{{system.social.pet.species}}"/>
+        </div>
+    </div>
+
+    <!-- Asignatura Favorita -->
+    <div class="section-group">
+        <h4 class="section-header">{{localize "HOGWARTS.FavoriteSubject"}}</h4>
+        <input class="spaced-input" type="text" name="system.social.subjects.fav1" value="{{system.social.subjects.fav1}}" placeholder="{{localize 'HOGWARTS.FavoriteSubject'}} 1"/>
+        {{#if hasSecondSubject}}
+        <input class="spaced-input" type="text" name="system.social.subjects.fav2" value="{{system.social.subjects.fav2}}" placeholder="{{localize 'HOGWARTS.FavoriteSubject'}} 2"/>
+        {{/if}}
+    </div>
+
+    <!-- Amigos -->
+    <div class="section-group">
+        <h4 class="section-header">{{localize "HOGWARTS.Friends"}}</h4>
+        <input class="spaced-input" type="text" name="system.social.friends.friend1" value="{{system.social.friends.friend1}}" placeholder="{{localize 'HOGWARTS.Name'}}"/>
+        <input class="spaced-input" type="text" name="system.social.friends.friend2" value="{{system.social.friends.friend2}}" placeholder="{{localize 'HOGWARTS.Name'}}"/>
+    </div>
+
+    <!-- Rival -->
+    <div class="section-group">
+        <h4 class="section-header">{{localize "HOGWARTS.Rival"}}</h4>
+        <input class="spaced-input" type="text" name="system.social.rival" value="{{system.social.rival}}" placeholder="{{localize 'HOGWARTS.Name'}}"/>
+    </div>
+</div>

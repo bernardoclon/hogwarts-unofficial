@@ -1,0 +1,76 @@
+<div class="sidebar-content">
+    <!-- Logo de la Casa -->
+    {{#if houseLogo}}
+    <div class="house-crest">
+        <img src="{{houseLogo}}" title="{{system.details.house}}"/>
+    </div>
+    {{/if}}
+
+    <!-- Rasgos (Stats) -->
+    <h3>{{localize "HOGWARTS.Traits"}}</h3>
+    
+    <div class="form-group">
+        <label class="rollable" data-trait="bravery">{{localize "HOGWARTS.Bravery"}} <i class="fas fa-dice"></i></label>
+        <div class="input-wrapper">
+            <input type="number" name="system.traits.bravery" value="{{system.traits.bravery}}" placeholder="0" min="0" max="3"/>
+            {{#if traitBonuses.bravery}}
+            <span class="trait-bonus">+{{traitBonuses.bravery}}</span>
+            {{/if}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="rollable" data-trait="cunning">{{localize "HOGWARTS.Cunning"}} <i class="fas fa-dice"></i></label>
+        <div class="input-wrapper">
+            <input type="number" name="system.traits.cunning" value="{{system.traits.cunning}}" placeholder="0" min="0" max="3"/>
+            {{#if traitBonuses.cunning}}
+            <span class="trait-bonus">+{{traitBonuses.cunning}}</span>
+            {{/if}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="rollable" data-trait="intellect">{{localize "HOGWARTS.Intellect"}} <i class="fas fa-dice"></i></label>
+        <div class="input-wrapper">
+            <input type="number" name="system.traits.intellect" value="{{system.traits.intellect}}" placeholder="0" min="0" max="3"/>
+            {{#if traitBonuses.intellect}}
+            <span class="trait-bonus">+{{traitBonuses.intellect}}</span>
+            {{/if}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="rollable" data-trait="loyalty">{{localize "HOGWARTS.Loyalty"}} <i class="fas fa-dice"></i></label>
+        <div class="input-wrapper">
+            <input type="number" name="system.traits.loyalty" value="{{system.traits.loyalty}}" placeholder="0" min="0" max="3"/>
+            {{#if traitBonuses.loyalty}}
+            <span class="trait-bonus">+{{traitBonuses.loyalty}}</span>
+            {{/if}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="rollable" data-trait="magic">{{localize "HOGWARTS.Magic"}} <i class="fas fa-dice"></i></label>
+        <div class="input-wrapper">
+            <input type="number" name="system.traits.magic" value="{{system.traits.magic}}" placeholder="0" min="0" max="3"/>
+            {{#if traitBonuses.magic}}
+            <span class="trait-bonus">+{{traitBonuses.magic}}</span>
+            {{/if}}
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Suerte (3 Estrellas) -->
+    <h3>{{localize "HOGWARTS.Luck"}}</h3>
+    <div class="resource-checks flexrow">
+        <input type="checkbox" class="star-checkbox" name="system.luck.val1" {{checked system.luck.val1}}/>
+        <input type="checkbox" class="star-checkbox" name="system.luck.val2" {{checked system.luck.val2}}/>
+        <input type="checkbox" class="star-checkbox" name="system.luck.val3" {{checked system.luck.val3}}/>
+    </div>
+
+    <!-- Experiencia (4 Rombos) -->
+    <h3>{{localize "HOGWARTS.Experience"}}</h3>
+    <div class="resource-checks flexrow">
+        <input type="checkbox" class="diamond-checkbox" name="system.experience.val1" {{checked system.experience.val1}}/>
+        <input type="checkbox" class="diamond-checkbox" name="system.experience.val2" {{checked system.experience.val2}}/>
+        <input type="checkbox" class="diamond-checkbox" name="system.experience.val3" {{checked system.experience.val3}}/>
+        <input type="checkbox" class="diamond-checkbox" name="system.experience.val4" {{checked system.experience.val4}}/>
+    </div>
+</div>

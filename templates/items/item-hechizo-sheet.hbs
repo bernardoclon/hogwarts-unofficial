@@ -1,0 +1,27 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'HOGWARTS.Name'}}"/></h1>
+            
+            <div class="spell-level-group">
+                <label class="resource-label">{{localize "HOGWARTS.Course"}} / {{localize "HOGWARTS.Type"}}</label>
+                <select name="system.level" data-dtype="Number">
+                    <option value="1" {{#if (eq system.level 1)}}selected{{/if}}>{{localize "HOGWARTS.Course"}} 1</option>
+                    <option value="2" {{#if (eq system.level 2)}}selected{{/if}}>{{localize "HOGWARTS.Course"}} 2</option>
+                    <option value="3" {{#if (eq system.level 3)}}selected{{/if}}>{{localize "HOGWARTS.Course"}} 3</option>
+                    <option value="4" {{#if (eq system.level 4)}}selected{{/if}}>{{localize "HOGWARTS.Course"}} 4</option>
+                    <option value="5" {{#if (eq system.level 5)}}selected{{/if}}>{{localize "HOGWARTS.Course"}} 5</option>
+                    <option value="6" {{#if (eq system.level 6)}}selected{{/if}}>{{localize "HOGWARTS.Course"}} 6</option>
+                    <option value="7" {{#if (eq system.level 7)}}selected{{/if}}>{{localize "HOGWARTS.Course"}} 7</option>
+                    <option value="8" {{#if (eq system.level 8)}}selected{{/if}}>{{localize "HOGWARTS.Curses"}}</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <section class="sheet-body">
+        <h3 class="section-header">{{localize "HOGWARTS.Description"}}</h3>
+        {{editor enrichedDescription target="system.description" button=true owner=owner editable=editable}}
+    </section>
+</form>

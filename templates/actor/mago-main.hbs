@@ -1,0 +1,52 @@
+<form class="{{cssClass}}" autocomplete="off" data-house="{{system.details.house}}">
+
+    <!-- 1. Header Común -->
+    {{> "systems/hogwarts/templates/actor/parts/header.hbs"}}
+
+    <!-- Cuerpo de la hoja Main -->
+    <div class="hogwarts-div">
+    <section class="sheet-body flexrow">
+
+        <!-- 2. Sidebar (Izquierda, siempre visible en Main) -->
+        <aside class="sidebar flexcol">
+            {{> "systems/hogwarts/templates/actor/parts/main/sidebar/sidebar.hbs"}}
+        </aside>
+
+        <!-- 3. Contenido Principal (Derecha con Tabs internos) -->
+        <div class="main-content flexcol">
+
+            <!-- Barra de Navegación de Tabs (Social, Objetos, Progreso, Condiciones) -->
+            <nav class="sheet-tabs tabs" data-group="primary">
+                <a class="item" data-tab="social">{{localize "HOGWARTS.Social"}}</a>
+                <a class="item" data-tab="objetos">{{localize "HOGWARTS.Inventory"}}</a>
+                <a class="item" data-tab="progreso">{{localize "HOGWARTS.Progress"}}</a>
+                <a class="item" data-tab="condiciones">{{localize "HOGWARTS.Conditions"}}</a>
+            </nav>
+
+            <!-- Cuerpo de los Tabs -->
+            <section class="content-body">
+                <!-- Tab Social -->
+                <div class="tab social" data-group="primary" data-tab="social">
+                    {{> "systems/hogwarts/templates/actor/parts/main/social/social.hbs"}}
+                </div>
+
+                <!-- Tab Objetos -->
+                <div class="tab objetos" data-group="primary" data-tab="objetos">
+                    {{> "systems/hogwarts/templates/actor/parts/main/objetos/objetos.hbs"}}
+                </div>
+
+                <!-- Tab Progreso -->
+                <div class="tab progreso" data-group="primary" data-tab="progreso">
+                    {{> "systems/hogwarts/templates/actor/parts/main/progreso/progreso.hbs"}}
+                </div>
+
+                <!-- Tab Condiciones -->
+                <div class="tab condiciones" data-group="primary" data-tab="condiciones">
+                    {{> "systems/hogwarts/templates/actor/parts/main/condiciones/condiciones.hbs"}}
+                </div>
+            </section>
+        </div>
+
+    </section>
+    </div>
+</form>

@@ -1,0 +1,15 @@
+<div class="tab-content">
+    <div class="items-list-header flexrow">
+        <h3 class="item-name">{{localize "HOGWARTS.Course"}} 3</h3>
+        <div class="item-controls">
+            <a class="item-control item-create" title="{{localize 'HOGWARTS.CreateSpell'}}" data-type="hechizo" data-level="3">
+                <i class="fas fa-plus"></i> {{localize "HOGWARTS.Add"}}
+            </a>
+        </div>
+    </div>
+    <ol class="items-list">
+        {{#each spells.level3 as |item id|}}
+            {{> "systems/hogwarts/templates/actor/parts/spells/hechizo-row.hbs" item=item}}
+        {{/each}}
+    </ol>
+</div>

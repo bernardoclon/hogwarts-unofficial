@@ -1,0 +1,119 @@
+{
+  "Actor": {
+    "types": [
+      "mago"
+    ],
+    "mago": {
+      "attributes": {
+        "hp": {
+          "value": 10,
+          "max": 10
+        }
+      },
+      "traits": {
+        "bravery": 0,
+        "cunning": 0,
+        "intellect": 0,
+        "loyalty": 0,
+        "magic": 0
+      },
+      "luck": {
+        "val1": false,
+        "val2": false,
+        "val3": false
+      },
+      "experience": {
+        "val1": false,
+        "val2": false,
+        "val3": false,
+        "val4": false
+      },
+      "details": {
+        "house": "",
+        "year": "",
+        "heritage": "",
+        "ambition": "",
+        "patronus": ""
+      },
+      "appearance": {
+        "skin": "",
+        "hair": "",
+        "build": ""
+      },
+      "wand": {
+        "wood": "",
+        "appearance": "",
+        "core": ""
+      },
+      "social": {
+        "pet": {
+          "name": "",
+          "species": ""
+        },
+        "subjects": {
+          "fav1": "",
+          "fav2": ""
+        },
+        "friends": {
+          "friend1": "",
+          "friend2": ""
+        },
+        "rival": ""
+      },
+      "conditions": {
+        "afraid": false,
+        "angry": false,
+        "stressed": false,
+        "jealous": false,
+        "embarrassed": false,
+        "hurt": false,
+        "hexed": false,
+        "unconscious": false
+      },
+      "sequel": "",
+      "quidditch": {
+        "game": {
+          "team1": "",
+          "score1": 0,
+          "team2": "",
+          "score2": 0
+        },
+        "season": "",
+        "matches": {
+          "gh": { "s1": 0, "s2": 0 },
+          "gr": { "s1": 0, "s2": 0 },
+          "gs": { "s1": 0, "s2": 0 },
+          "hr": { "s1": 0, "s2": 0 },
+          "hs": { "s1": 0, "s2": 0 },
+          "rs": { "s1": 0, "s2": 0 }
+        },
+        "totals": {
+          "gryffindor": 0,
+          "hufflepuff": 0,
+          "ravenclaw": 0,
+          "slytherin": 0
+        },
+        "previousWinner": ""
+      }
+    }
+  },
+  "Item": {
+    "types": [
+      "objeto_magico",
+      "progreso",
+      "hechizo"
+    ],
+    "objeto_magico": {
+      "quantity": 1,
+      "description": ""
+    },
+    "progreso": {
+      "progressType": "none",
+      "selectedTrait": ""
+    },
+    "hechizo": {
+      "level": 1,
+      "description": ""
+    }
+  }
+}

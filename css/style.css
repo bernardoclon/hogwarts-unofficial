@@ -1,0 +1,168 @@
+@font-face {
+    font-family: "Harry";
+    src: url("harry.ttf") format("truetype");
+}
+
+img.fa-spin {
+    width: 200px; /* Ajusta el tamaño */
+    height: 200px;
+    animation: pulsate 3s infinite ease-in-out, none !important; /* Añade el parpadeo */
+    opacity: 1; /* Transparencia inicial */
+}
+
+@keyframes pulsate {
+    0% {
+        filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    }
+    50% {
+        filter: drop-shadow(0 0 10px rgb(255, 215, 0));
+    }
+    100% {
+        filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    }
+}
+
+#pause figcaption {
+color: var(--color-text-light-0);
+font-size: 35px;
+text-shadow: 2px 2px 2px var(--color-shadow-dark);
+font-family: "Harry", serif;
+font-weight: bold;
+letter-spacing: 2px;
+padding: 0;
+margin: 0;
+}
+
+#pause {
+background: none !important;
+}
+
+
+/* Estilos comunes para todos los elementos de compendio en el panel lateral */
+#compendium-packs .directory-list .directory-item.compendium-pack {
+    height: 70px; /* Altura fija para cada elemento de compendio */
+    line-height: 70px; /* Centra verticalmente el texto */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde */
+    transition: all 0.2s ease-in-out; /* Transición suave para efectos hover */
+    border: 1px solid rgba(0,0,0,0.5); /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 5px; /* Margen inferior para separar los elementos */
+    position: relative; /* Necesario para posicionar elementos internos */
+    /* Las propiedades background-image, -size, -position, -repeat serán aplicadas por JavaScript */
+}
+
+/* Efecto hover en los elementos de compendio */
+#compendium-packs .directory-list .directory-item.compendium-pack:hover {
+    transform: scale(1.02); /* Ligeramente más grande al pasar el ratón */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Sombra luminosa */
+}
+
+/* Título del compendio dentro del banner */
+#compendium-packs .directory-list .directory-item.compendium-pack .pack-title {
+    font-size: 1.2em; /* Tamaño de fuente para el título */
+    font-weight: bold; /* Negrita */
+    text-align: center; /* Centra el texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Sombra fuerte para legibilidad */
+    color: #ff5252; /* Color de texto específico para los banners del módulo */
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente para el texto */
+    padding: 0 5px; /* Pequeño padding alrededor del texto */
+    border-radius: 3px; /* Bordes redondeados para el fondo del texto */
+    display: inline-block; /* Para que el fondo solo abarque el texto */
+    position: absolute; /* Posicionamiento absoluto para centrar */
+    top: 50%; /* Centrar verticalmente */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translate(-50%, -50%); /* Ajustar para el centrado real */
+    width: calc(100% - 10px); /* Ancho para que el texto ocupe casi todo el espacio del banner */
+    box-sizing: border-box; /* Incluir padding y borde en el ancho total */
+    z-index: 10; /* Asegura que el título esté por encima del fondo */
+}
+
+/* Icono del compendio (ocultar si se usa una imagen de banner) */
+#compendium-packs .directory-list .directory-item.compendium-pack .pack-icon {
+    display: none; /* Oculta el icono por defecto si se usa una imagen de banner */
+}
+
+/* Las reglas específicas para cada compendio se asume que son aplicadas por JavaScript. */
+/* Las líneas comentadas a continuación eran solo ejemplos y no son necesarias en el CSS. */
+/*
+#compendium-packs .directory-list .directory-item.compendium-pack[data-pack="susurros-en-la-oscuridad-20a.1-poderes"] {}
+#compendium-packs .directory-list .directory-item.compendium-pack[data-pack="susurros-en-la-oscuridad-20a.2-meritos-defectos-y-trasfondos"] {}
+#compendium-packs .directory-list .directory-item.compendium-pack[data-pack="susurros-en-la-oscuridad-20a.3-armas-armaduras-y-objetos"] {}
+#compendium-packs .directory-list .directory-item.compendium-pack[data-pack="susurros-en-la-oscuridad-20a.4-antagonistas-y-bestiario"] {}
+*/
+
+/* --- Estilos para las ventanas emergentes de compendios (las hojas) --- */
+
+/* Estilos para el div del banner dentro de la ventana de compendio */
+.window-app.compendium-directory .header-banner {
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    height: 150px; /* Ajusta esta altura según el tamaño deseado para tus banners */
+    overflow: hidden; /* Recorta cualquier parte de la imagen que se desborde */
+    position: relative; /* Necesario para que el contenido hijo se posicione correctamente */
+    display: flex; /* Para asegurar que el contenido se alinee */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    background-color: #222; /* Color de fondo de respaldo */
+    /* La imagen de fondo será aplicada por JavaScript */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Oculta la imagen predeterminada de Foundry VTT */
+.window-app.compendium-directory .header-banner img {
+    display: none; /* Oculta completamente la imagen */
+}
+
+/* Estilos para el título del compendio dentro de la ventana emergente */
+.window-app.compendium-directory .header-banner .compendium-name {
+    position: absolute; /* Posiciona el nombre sobre el banner */
+    z-index: 20; /* Asegura que esté por encima de la imagen */
+    color: white; /* Color de texto claro */
+    font-size: 1.5em; /* Tamaño de fuente más grande */
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9); /* Sombra para legibilidad */
+    background: rgba(0,0,0,0.5); /* Fondo semi-transparente para el texto */
+    padding: 5px 10px;
+    border-radius: 5px;
+    max-width: 90%; /* Limita el ancho para evitar desbordamiento */
+    text-align: center;
+}
+
+/* Estilos para el cuerpo de la ventana del compendio, debajo del banner */
+.window-app.compendium-directory .window-content {
+    padding: 0; /* Elimina el padding por defecto para que el contenido sea fluido */
+    background-color: #333; /* Color de fondo de respaldo */
+    overflow-y: auto; /* Permite desplazamiento si el contenido es largo */
+}
+
+/* Estilos para el encabezado de la ventana del compendio (dentro de .window-content) */
+.window-app.compendium-directory .directory-header {
+    background: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente para el encabezado de la lista */
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: white; /* Color de texto predeterminado */
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilos para la lista de elementos dentro de la ventana del compendio */
+.window-app.compendium-directory .directory-list {
+    background: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente para la lista */
+    padding: 10px;
+}
+
+/* Estilos para los elementos individuales dentro de la lista de la ventana del compendio */
+.window-app.compendium-directory .directory-item {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo claro semi-transparente para los ítems */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 5px;
+    padding: 8px;
+    border-radius: 3px;
+    color: white; /* Color de texto por defecto para los ítems */
+}
+
+/* Efecto hover en los ítems de la lista */
+.window-app.compendium-directory .directory-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}

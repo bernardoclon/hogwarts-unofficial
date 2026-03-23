@@ -1,0 +1,123 @@
+<form class="{{cssClass}}" autocomplete="off" data-house="{{system.details.house}}">
+
+    <!-- Header Común -->
+    {{> "systems/hogwarts/templates/actor/parts/header.hbs"}}
+
+    <section class="sheet-body quidditch-body">
+        
+        <div class="quidditch-top-section flexrow">
+            <!-- IZQUIERDA: GRAN MARCADOR (Juego Actual) -->
+            <div class="scoreboard-container">
+                <h2 class="scoreboard-title">{{localize "HOGWARTS.CurrentGame"}}</h2>
+                <div class="scoreboard flexrow">
+                    <div class="team-box home">
+                        <input type="text" class="team-name" name="system.quidditch.game.team1" value="{{system.quidditch.game.team1}}" placeholder="{{localize 'HOGWARTS.Team'}} 1"/>
+                        <input type="number" class="team-score" name="system.quidditch.game.score1" value="{{system.quidditch.game.score1}}" placeholder="0"/>
+                    </div>
+                    
+                    <div class="versus-badge">VS</div>
+                    
+                    <div class="team-box away">
+                        <input type="text" class="team-name" name="system.quidditch.game.team2" value="{{system.quidditch.game.team2}}" placeholder="{{localize 'HOGWARTS.Team'}} 2"/>
+                        <input type="number" class="team-score" name="system.quidditch.game.score2" value="{{system.quidditch.game.score2}}" placeholder="0"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DERECHA: INFO TEMPORADA (Apilada) -->
+            <div class="quidditch-side-info flexcol">
+                <div class="header-block season-block">
+                    <label>{{localize "HOGWARTS.Season"}}</label>
+                    <input type="text" name="system.quidditch.season" value="{{system.quidditch.season}}"/>
+                </div>
+                <div class="header-block winner-block">
+                    <label>{{localize "HOGWARTS.PreviousWinner"}}</label>
+                    <input type="text" name="system.quidditch.previousWinner" value="{{system.quidditch.previousWinner}}" placeholder="Casa..."/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enfrentamientos (Casas) -->
+        <h3 class="matches-title">{{localize "HOGWARTS.Totals"}} & Partidos</h3>
+        
+        <div class="quidditch-matches">
+            {{!-- Gryffindor vs Hufflepuff --}}
+            <div class="match-card">
+                <div class="match-label">Gryffindor <span class="vs">vs</span> Hufflepuff</div>
+                <div class="scores flexrow">
+                    <input type="number" name="system.quidditch.matches.gh.s1" value="{{system.quidditch.matches.gh.s1}}"/>
+                    <span class="divider">-</span>
+                    <input type="number" name="system.quidditch.matches.gh.s2" value="{{system.quidditch.matches.gh.s2}}"/>
+                </div>
+            </div>
+            {{!-- Gryffindor vs Ravenclaw --}}
+            <div class="match-card">
+                <div class="match-label">Gryffindor <span class="vs">vs</span> Ravenclaw</div>
+                <div class="scores flexrow">
+                    <input type="number" name="system.quidditch.matches.gr.s1" value="{{system.quidditch.matches.gr.s1}}"/>
+                    <span class="divider">-</span>
+                    <input type="number" name="system.quidditch.matches.gr.s2" value="{{system.quidditch.matches.gr.s2}}"/>
+                </div>
+            </div>
+            {{!-- Gryffindor vs Slytherin --}}
+            <div class="match-card">
+                <div class="match-label">Gryffindor <span class="vs">vs</span> Slytherin</div>
+                <div class="scores flexrow">
+                    <input type="number" name="system.quidditch.matches.gs.s1" value="{{system.quidditch.matches.gs.s1}}"/>
+                    <span class="divider">-</span>
+                    <input type="number" name="system.quidditch.matches.gs.s2" value="{{system.quidditch.matches.gs.s2}}"/>
+                </div>
+            </div>
+            {{!-- Hufflepuff vs Ravenclaw --}}
+            <div class="match-card">
+                <div class="match-label">Hufflepuff <span class="vs">vs</span> Ravenclaw</div>
+                <div class="scores flexrow">
+                    <input type="number" name="system.quidditch.matches.hr.s1" value="{{system.quidditch.matches.hr.s1}}"/>
+                    <span class="divider">-</span>
+                    <input type="number" name="system.quidditch.matches.hr.s2" value="{{system.quidditch.matches.hr.s2}}"/>
+                </div>
+            </div>
+            {{!-- Hufflepuff vs Slytherin --}}
+            <div class="match-card">
+                <div class="match-label">Hufflepuff <span class="vs">vs</span> Slytherin</div>
+                <div class="scores flexrow">
+                    <input type="number" name="system.quidditch.matches.hs.s1" value="{{system.quidditch.matches.hs.s1}}"/>
+                    <span class="divider">-</span>
+                    <input type="number" name="system.quidditch.matches.hs.s2" value="{{system.quidditch.matches.hs.s2}}"/>
+                </div>
+            </div>
+            {{!-- Ravenclaw vs Slytherin --}}
+            <div class="match-card">
+                <div class="match-label">Ravenclaw <span class="vs">vs</span> Slytherin</div>
+                <div class="scores flexrow">
+                    <input type="number" name="system.quidditch.matches.rs.s1" value="{{system.quidditch.matches.rs.s1}}"/>
+                    <span class="divider">-</span>
+                    <input type="number" name="system.quidditch.matches.rs.s2" value="{{system.quidditch.matches.rs.s2}}"/>
+                </div>
+            </div>
+        </div>
+
+        <hr class="quidditch-separator">
+
+        <!-- Sección Totales -->
+        <div class="totals-section flexrow">
+            <div class="house-total gryffindor">
+                <img src="systems/hogwarts/art/casas/gryffindor.png" width="40" height="40" title="Gryffindor"/>
+                <input type="number" name="system.quidditch.totals.gryffindor" value="{{system.quidditch.totals.gryffindor}}"/>
+            </div>
+            <div class="house-total hufflepuff">
+                <img src="systems/hogwarts/art/casas/hufflepuff.png" width="40" height="40" title="Hufflepuff"/>
+                <input type="number" name="system.quidditch.totals.hufflepuff" value="{{system.quidditch.totals.hufflepuff}}"/>
+            </div>
+            <div class="house-total ravenclaw">
+                <img src="systems/hogwarts/art/casas/ravenclaw.png" width="40" height="40" title="Ravenclaw"/>
+                <input type="number" name="system.quidditch.totals.ravenclaw" value="{{system.quidditch.totals.ravenclaw}}"/>
+            </div>
+            <div class="house-total slytherin">
+                <img src="systems/hogwarts/art/casas/slytherin.png" width="40" height="40" title="Slytherin"/>
+                <input type="number" name="system.quidditch.totals.slytherin" value="{{system.quidditch.totals.slytherin}}"/>
+            </div>
+        </div>
+
+    </section>
+</form>

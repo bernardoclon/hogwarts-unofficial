@@ -1,0 +1,36 @@
+<form class="{{cssClass}}" autocomplete="off" data-house="{{system.details.house}}">
+
+    <!-- Header Común -->
+    {{> "systems/hogwarts/templates/actor/parts/header.hbs"}}
+
+    <section class="sheet-body">
+        <div class="hogwarts-div">
+            
+            <!-- Copa Grande Cambiante -->
+            <div class="house-cup-container" style="margin-top: 20px;">
+                <div class="house-cup {{winner}}"></div>
+            </div>
+
+            <!-- Totales -->
+            <div class="totals-section flexrow">
+                <div class="house-total gryffindor">
+                    <img src="systems/hogwarts/art/casas/gryffindor.png" width="40" height="40" title="Gryffindor"/>
+                    <input type="number" value="{{points.gryffindor}}" disabled/>
+                </div>
+                <div class="house-total hufflepuff">
+                    <img src="systems/hogwarts/art/casas/hufflepuff.png" width="40" height="40" title="Hufflepuff"/>
+                    <input type="number" value="{{points.hufflepuff}}" disabled/>
+                </div>
+                <div class="house-total ravenclaw">
+                    <img src="systems/hogwarts/art/casas/ravenclaw.png" width="40" height="40" title="Ravenclaw"/>
+                    <input type="number" value="{{points.ravenclaw}}" disabled/>
+                </div>
+                <div class="house-total slytherin">
+                    <img src="systems/hogwarts/art/casas/slytherin.png" width="40" height="40" title="Slytherin"/>
+                    <input type="number" value="{{points.slytherin}}" disabled/>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</form>
