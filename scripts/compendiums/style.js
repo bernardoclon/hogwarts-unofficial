@@ -16,7 +16,7 @@ const compendiumBanners = [
         bannerImage: `systems/${MODULE_ID}/art/banner2.jpeg`,
     },
     {
-        dataPack: `${MODULE_ID}.actores`,
+        dataPack: `${MODULE_ID}.objetos`,
         colorText: "#ff5252",
         iconText: "fa-solid fa-dot-circle",
         bannerImage: `systems/${MODULE_ID}/art/banner3.jpeg`,
