@@ -54,8 +54,8 @@
       "flags": {}
     }
   ],
-  "url": "https://github.com/tu-usuario/nahual-foundry",
-  "manifest": "https://github.com/tu-usuario/nahual-foundry/releases/latest/download/system.json",
-  "download": "https://github.com/tu-usuario/nahual-foundry/releases/latest/download/nahual.zip",
+  "url": "https://github.com/bernardoclon/hogwarts-unofficial",
+  "manifest": "https://github.com/bernardoclon/hogwarts-unofficial/releases/latest/download/system.json",
+  "download": "https://github.com/bernardoclon/hogwarts-unofficial/releases/latest/download/hogwarts.zip",
   "background": "systems/hogwarts/art/banner.png"
   }
