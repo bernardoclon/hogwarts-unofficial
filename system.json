@@ -22,7 +22,7 @@
   ],
   "packs": [
     {
-      "name": "hechizos",
+      "name": "hechizoshogwarts",
       "label": "Hechizos de Hogwarts",
       "path": "packs/hechizos",
       "type": "Item",
@@ -30,7 +30,7 @@
       "folder": "Hogwarts"
     },
     {
-      "name": "objetos",
+      "name": "objetoshogwarts",
       "label": "Objetos Magicos",
       "path": "packs/objetos",
       "type": "Item",
@@ -38,7 +38,7 @@
       "folder": "Hogwarts"
     },
     {
-      "name": "actores",
+      "name": "actoreshogwarts",
       "label": "Personajes de Hogwarts",
       "path": "packs/actores",
       "type": "Actor",
