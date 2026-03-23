@@ -56,6 +56,6 @@
   ],
   "url": "https://github.com/bernardoclon/hogwarts-unofficial",
   "manifest": "https://github.com/bernardoclon/hogwarts-unofficial/releases/latest/download/system.json",
-  "download": "https://github.com/bernardoclon/hogwarts-unofficial/releases/tag/V1-0/hogwarts.zip",
+  "download": "https://github.com/bernardoclon/hogwarts-unofficial/releases/tag/V1-0.zip",
   "background": "systems/hogwarts/art/banner.png"
   }
