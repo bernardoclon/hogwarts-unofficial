@@ -213,33 +213,32 @@ export class MagoSheet extends ActorSheet {
 
   /** @override */
   async _onDrop(event) {
-    // Recuperamos los datos del evento de arrastre
     const data = TextEditor.getDragEventData(event);
+    if (!this.isEditable || data.type !== "Item") return super._onDrop(event);
 
-    // Solo nos interesa intervenir si se está arrastrando un Item
-    if (data.type !== "Item") return super._onDrop(event);
-
-    // Obtenemos el item que se está arrastrando
+    // Cargamos el item para validar sus reglas antes de permitir el drop
     const item = await Item.implementation.fromDropData(data);
     if (!item) return super._onDrop(event);
 
-    // Validar límites para items de progreso antes de añadirlos
+    // Validaciones específicas para items de tipo "progreso"
     if (item.type === 'progreso') {
       const progressType = item.system.progressType;
-      const existingCount = this.actor.items.filter(i => i.type === 'progreso' && i.system.progressType === progressType).length;
+      // Filtramos excluyendo el ID del item actual (por si es un reordenamiento interno)
+      const existingCount = this.actor.items.filter(i => 
+        i.type === 'progreso' && i.system.progressType === progressType && i.id !== item.id
+      ).length;
 
       if (progressType === 'increaseTrait' && existingCount >= 2) {
-        ui.notifications.warn(game.i18n.localize("HOGWARTS.WarnMaxIncreaseTrait"));
-        return false; // Prevenir que se suelte el item
+        return ui.notifications.warn(game.i18n.localize("HOGWARTS.WarnMaxIncreaseTrait"));
       }
-
       if (progressType === 'secondSubject' && existingCount >= 1) {
-        ui.notifications.warn(game.i18n.localize("HOGWARTS.WarnMaxSecondSubject"));
-        return false; // Prevenir que se suelte el item
+        return ui.notifications.warn(game.i18n.localize("HOGWARTS.WarnMaxSecondSubject"));
       }
     }
 
-    return super._onDrop(event);
+    // Al llamar específicamente a _onDropItem pasándole la data ya procesada,
+    // aseguramos que Foundry cree el objeto correctamente aunque hayamos usado await.
+    return this._onDropItem(event, data);
   }
 
   /**
