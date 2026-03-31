@@ -197,7 +197,6 @@ form[data-house="hufflepuff"] {
     object-fit: cover;
     background-color: transparent;
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    filter: brightness(0) invert(1);
 }
 
 .hogwarts .header-details {

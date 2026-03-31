@@ -239,40 +239,6 @@ export class MagoSheet extends ActorSheet {
       }
     }
 
-    // Identificamos sobre qué pestaña o elemento se soltó el item
-    const dropTarget = $(event.target).closest("[data-tab]");
-    if (!dropTarget.length) return super._onDrop(event);
-
-    const tabName = dropTarget.data("tab");
-
-    // Mapa de validación: Nombre del Tab -> Nivel requerido
-    const tabToLevel = {
-      "curso1": 1,
-      "curso2": 2,
-      "curso3": 3,
-      "curso4": 4,
-      "curso5": 5,
-      "curso6": 6,
-      "curso7": 7,
-      "maldiciones": 8
-    };
-
-    // Si se soltó en una pestaña que NO es de hechizos (ej. Inventario), dejamos pasar el evento
-    if (tabToLevel[tabName] === undefined) return super._onDrop(event);
-
-    // 1. Validar que sea del tipo "hechizo"
-    if (item.type !== "hechizo") {
-      ui.notifications.warn(game.i18n.localize("HOGWARTS.WarnNotASpell"));
-      return false;
-    }
-
-    // 2. Validar que el nivel del hechizo coincida con el curso de la pestaña
-    if (item.system.level !== tabToLevel[tabName]) {
-      ui.notifications.warn(game.i18n.localize("HOGWARTS.WarnWrongLevel"));
-      return false;
-    }
-
-    // Si todo es correcto, permitimos que Foundry procese el drop (crear u ordenar)
     return super._onDrop(event);
   }
 
