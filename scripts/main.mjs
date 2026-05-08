@@ -1,6 +1,11 @@
 import { MagoSheet } from "./actor/mago.mjs";
+import { MagoContainerSheet } from "./actor/mago-container.mjs";
 import { HogwartsItemSheet } from "./item/item-sheet.mjs";
 import { HousePointsApp } from "./gm/house-points.mjs";
+// Importación de Modelos de Datos
+import { MagoData, BaulData } from "./data/actor-models.mjs";
+import { ObjetoMagicoData, HechizoData, ProgresoData } from "./data/item-models.mjs";
+
 import "./compendiums/module.js";
 import "./compendiums/style.js";
 import "./pause-customizer.js";
@@ -8,11 +13,25 @@ import "./pause-customizer.js";
 Hooks.once("init", async function() {
   console.log("Hogwarts | Inicializando el sistema de juego");
 
+  // Registrar Modelos de Datos (Data Models)
+  CONFIG.Actor.dataModels.mago = MagoData;
+  CONFIG.Actor.dataModels.baul = BaulData;
+  
+  CONFIG.Item.dataModels.objeto_magico = ObjetoMagicoData;
+  CONFIG.Item.dataModels.hechizo = HechizoData;
+  CONFIG.Item.dataModels.progreso = ProgresoData;
+
   // Registrar hojas de actor
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("hogwarts", MagoSheet, {
     makeDefault: true,
     label: "Hoja de Mago"
+  });
+
+  Actors.registerSheet("hogwarts", MagoContainerSheet, {
+    types: ["baul"],
+    makeDefault: true,
+    label: "HOGWARTS.Container"
   });
 
   // Registrar hojas de item

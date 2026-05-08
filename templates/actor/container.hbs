@@ -1,0 +1,76 @@
+<form class="{{cssClass}} flexcol hogwarts" autocomplete="off">
+
+    {{!-- Cabecera del Baúl --}}
+    <header class="sheet-header flexrow">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+        <div class="header-details flexcol">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'HOGWARTS.Name'}}"/>
+            </h1>
+        </div>
+    </header>
+
+    {{!-- Cuerpo --}}
+    <section class="sheet-body">
+        {{!-- Navegación --}}
+        <nav class="sheet-tabs tabs" data-group="primary">
+            <a class="item" data-tab="contents">{{localize 'HOGWARTS.Contents'}}</a>
+        </nav>
+
+        <div class="content-body">
+            <div class="tab contents" data-group="primary" data-tab="contents">
+                <ol class="items-list">
+                    <li class="item flexrow items-list-header">
+                        <div class="item-name">{{localize "HOGWARTS.Name"}}</div>
+                        <div class="item-controls" style="flex: 0 0 80px;">
+                            <a class="item-control item-create" title="{{localize 'HOGWARTS.CreateSpell'}}" data-type="hechizo"><i class="fas fa-magic"></i></a>
+                            <a class="item-control item-create" title="{{localize 'HOGWARTS.CreateItem'}}" data-type="objeto_magico"><i class="fas fa-plus"></i></a>
+                        </div>
+                    </li>
+
+                    {{!-- Sección de Hechizos --}}
+                    {{#if spells.length}}
+                    <li class="item flexrow section-header" style="background: rgba(255,255,255,0.05); font-weight: bold;">
+                        <div class="item-name">{{localize "HOGWARTS.Spells"}}</div>
+                    </li>
+                    {{#each spells as |item id|}}
+                    <li class="item flexrow" data-item-id="{{item._id}}">
+                        <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+                        <h4 class="item-name">{{item.name}}</h4>
+                        <div class="item-controls">
+                            <a class="item-control item-take" title="{{localize 'HOGWARTS.Take'}}"><i class="fas fa-hand-paper"></i></a>
+                            <a class="item-control item-edit" title="{{localize 'HOGWARTS.Edit'}}"><i class="fas fa-edit"></i></a>
+                            <a class="item-control item-delete" title="{{localize 'HOGWARTS.Delete'}}"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </li>
+                    {{/each}}
+                    {{/if}}
+
+                    {{!-- Sección de Objetos --}}
+                    {{#if inventory.length}}
+                    <li class="item flexrow section-header" style="background: rgba(255,255,255,0.05); font-weight: bold; margin-top: 10px;">
+                        <div class="item-name">{{localize "HOGWARTS.Inventory"}}</div>
+                    </li>
+                    {{#each inventory as |item id|}}
+                    <li class="item flexrow" data-item-id="{{item._id}}">
+                        <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+                        <h4 class="item-name">{{item.name}}</h4>
+                        <div class="item-controls">
+                            <a class="item-control item-take" title="{{localize 'HOGWARTS.Take'}}"><i class="fas fa-hand-paper"></i></a>
+                            <a class="item-control item-edit" title="{{localize 'HOGWARTS.Edit'}}"><i class="fas fa-edit"></i></a>
+                            <a class="item-control item-delete" title="{{localize 'HOGWARTS.Delete'}}"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </li>
+                    {{/each}}
+                    {{/if}}
+
+                    {{#unless items.length}}
+                    <li class="item flexrow" style="justify-content: center; opacity: 0.5; font-style: italic; padding: 20px;">
+                        {{localize "HOGWARTS.None"}}
+                    </li>
+                    {{/unless}}
+                </ol>
+            </div>
+        </div>
+    </section>
+</form>

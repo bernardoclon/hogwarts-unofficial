@@ -8,6 +8,17 @@
     "verified": "14",
     "maximum": "14"
   },
+  "documentTypes": {
+    "Actor": {
+      "mago": {},
+      "baul": {}
+    },
+    "Item": {
+      "objeto_magico": {},
+      "progreso": {},
+      "hechizo": {}
+    }
+  },
   "authors": [
     {
       "name": "Don Goblin"
@@ -61,7 +72,7 @@
     }
   ],
   "url": "https://github.com/bernardoclon/hogwarts-unofficial",
-  "manifest": "https://raw.githubusercontent.com/bernardoclon/hogwarts-unofficial/refs/heads/main/system.json",
+  "manifest": "https://github.com/bernardoclon/hogwarts-unofficial/releases/latest/download/system.json",
   "download": "https://github.com/bernardoclon/hogwarts-unofficial/archive/refs/tags/V0.1.3.zip",
   "media": [
     {

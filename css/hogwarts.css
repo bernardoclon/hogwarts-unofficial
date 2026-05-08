@@ -90,6 +90,11 @@ form[data-house="hufflepuff"] {
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
+.window-app.hogwarts.sheet.actor.container {
+    min-width: 450px;
+    min-height: 680px;
+}
+
 /* Personalización de la barra de título de la ventana (Chrome) */
 .window-app.hogwarts .window-header {
     background: var(--house-primary);
@@ -542,6 +547,14 @@ form[data-house="hufflepuff"] {
     margin-bottom: -1px;
     background: linear-gradient(to top, var(--hogwarts-parchment) 50%, #2a2a2a 100%);
     box-shadow: 0 -2px 3px rgba(0,0,0,0.05);
+}
+
+/* Estilo específico para la pestaña del Baúl: blanco puro sin efectos */
+.hogwarts.container .sheet-tabs .item,
+.hogwarts.container .sheet-tabs .item.active,
+.hogwarts.container .sheet-tabs .item:hover {
+    color: #ffffff !important;
+    text-shadow: none !important;
 }
 
 /* Cuerpo de la hoja que ocupa el espacio restante */

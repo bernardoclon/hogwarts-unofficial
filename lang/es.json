@@ -99,11 +99,15 @@
     "ResultPartial": "Un éxito empañado por complicaciones imprevistas",
     "ResultFailure": "El intento se desvanece dejando tras de sí solo problemas.",
     "NewItem": "Nuevo {name}",
-    "ObjetoMagico": "Objeto Mágico"
+    "ObjetoMagico": "Objeto Mágico",
+    "Contents": "Contenido",
+    "Take": "Recoger",
+    "Container": "Baúl"
   },
   "TYPES": {
     "Actor": {
-      "mago": "Mago"
+      "mago": "Mago",
+      "baul": "Baúl"
     },
     "Item": {
       "objeto_magico": "Objeto Mágico",

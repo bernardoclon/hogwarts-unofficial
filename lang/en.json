@@ -99,11 +99,15 @@
     "ResultPartial": "A success marred by unforeseen complications",
     "ResultFailure": "The attempt vanishes, leaving only problems behind.",
     "NewItem": "New {name}",
-    "ObjetoMagico": "Magic Item"
+    "ObjetoMagico": "Magic Item",
+    "Contents": "Contents",
+    "Take": "Take",
+    "Container": "Trunk"
   },
   "TYPES": {
     "Actor": {
-      "mago": "Wizard"
+      "mago": "Wizard",
+      "baul": "Trunk"
     },
     "Item": {
       "objeto_magico": "Magic Item",
