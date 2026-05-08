@@ -390,7 +390,7 @@ export class MagoSheet extends ActorSheet {
               user: game.user.id,
               speaker: ChatMessage.getSpeaker({ actor: this.actor }),
               content: msgContent,
-              type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+              style: CONST.CHAT_MESSAGE_STYLES.ROLL,
               rolls: [roll],
               sound: CONFIG.sounds.dice
             });
