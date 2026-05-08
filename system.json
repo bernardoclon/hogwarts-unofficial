@@ -52,11 +52,17 @@
       "name": "Español",
       "path": "lang/es.json",
       "flags": {}
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
     }
   ],
   "url": "https://github.com/bernardoclon/hogwarts-unofficial",
   "manifest": "https://github.com/bernardoclon/hogwarts-unofficial/releases/latest/download/system.json",
-  "download": "https://github.com/bernardoclon/hogwarts-unofficial/archive/refs/tags/V0.1.2.zip",
+  "download": "https://github.com/bernardoclon/hogwarts-unofficial/archive/refs/tags/V0.1.3.zip",
   "media": [
     {
       "type": "setup",
