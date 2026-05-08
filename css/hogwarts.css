@@ -1448,18 +1448,42 @@ form[data-house="hufflepuff"] {
 }
 
 .chat-message {
-    background: black;
+    background: #000000;
+    color: #ffffff;
     border: 1px solid #333;
 }
 
-.chat-message .message-timestamp {
-    color: white;
+.chat-message .message-header,
+.chat-message h1,
+.chat-message h2,
+.chat-message h3,
+.chat-message h4,
+.chat-message .message-content,
+.chat-message .dice-roll .dice-formula,
+.chat-message .dice-roll .dice-total {
+    color: #ffffff;
 }
 
-.chat-message .message-sender {
-    color: white;
+body.theme-light .chat-message {
+    background: #f5f5dc; /* Color Beige */
+    color: #000000;
+    border: 1px solid #d2b48c; /* Borde acorde al tono beige */
 }
 
-.chat-message .message-delete {
-    color: white;
+body.theme-light .chat-message .message-header,
+body.theme-light .chat-message h1,
+body.theme-light .chat-message h2,
+body.theme-light .chat-message h3,
+body.theme-light .chat-message h4,
+body.theme-light .chat-message .message-sender,
+body.theme-light .chat-message .message-timestamp,
+body.theme-light .chat-message .message-content,
+body.theme-light .chat-message .dice-roll .dice-formula,
+body.theme-light .chat-message .dice-roll .dice-total {
+    color: #000000;
+}
+
+body.theme-light .chat-message .dice-roll .dice-formula,
+body.theme-light .chat-message .dice-roll .dice-total {
+    background: rgba(0, 0, 0, 0.05);
 }
