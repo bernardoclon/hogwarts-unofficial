@@ -200,6 +200,7 @@ form[data-house="hufflepuff"] {
     border: 2px solid var(--house-primary);
     border-radius: 5px;
     object-fit: cover;
+    object-position: top left; /* Alinea la imagen a la esquina superior izquierda */
     background-color: transparent;
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
@@ -662,6 +663,8 @@ form[data-house="hufflepuff"] {
     border: none;
     width: 24px;
     height: 24px;
+    object-fit: cover; /* Asegura que la imagen cubra el área manteniendo su proporción */
+    object-position: top left; /* Alinea la imagen a la esquina superior izquierda */
     background: transparent;
 }
 
